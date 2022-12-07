@@ -12,10 +12,12 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=5000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "yarn build && aws s3 sync --cache-control 'max-age=3600' build/ s3://russwar-video-embed",
+    "testdeploy": "yarn build && aws s3 sync --cache-control 'max-age=0' build/ s3://russwar-video-embed-test"
   },
   "eslintConfig": {
     "extends": [
